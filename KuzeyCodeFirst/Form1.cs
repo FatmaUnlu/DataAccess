@@ -20,7 +20,6 @@ namespace KuzeyCodeFirst
             });
             _dbContext.SaveChanges();
         }
-
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             var kategori = _dbContext.Kategoriler.First();

@@ -17,9 +17,14 @@ namespace KuzeyCodeFirst.Models
         public int StokMiktari { get; set;}
         public bool DevamEtmiyorMu { get; set; }
 
-        [ForeignKey(nameof(KategoriId))] //nameof nesneyyi yanlış yazmaya izin vermez.
+        public Guid? TedarikciId { get; set; }
+
+
+        [ForeignKey(nameof(KategoriId))] //nameof nesneyyi yanlış yazmaya izin vermez. Bir nesnenin o anki ismini string yapar
         public Kategori Kategori { get; set; }
 
        public ICollection <SiparisDetay> SiparisDetaylari { get; set; } = new HashSet <SiparisDetay> ();
+        [ForeignKey(nameof(TedarikciId))]
+        public Tedarikci Tedarikci { get; set; }
     }
 }

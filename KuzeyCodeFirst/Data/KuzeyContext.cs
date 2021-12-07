@@ -22,13 +22,19 @@ namespace KuzeyCodeFirst.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = Kuzey4Db; Integrated Security = True;");
+                optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = Kuzey4Db; Integrated Security = True;"); //connection string
             }
         }
         
         
         public DbSet <Kategori> Kategoriler { get; set; }
         public DbSet<Urun> Urunler { get; set; }
+        public DbSet<Siparis> Siparisler { get; set; }
+        public DbSet<SiparisDetay> SiparisDetaylar { get; set; }
+
+        public DbSet<Tedarikci > Tedarikciler { get; set; }
+
+
 
         public override int SaveChanges()
         {
@@ -60,9 +66,7 @@ namespace KuzeyCodeFirst.Data
                 item.State= EntityState.Modified;
             }
             return base.SaveChanges();
-
-            
-
+          
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -89,7 +93,7 @@ namespace KuzeyCodeFirst.Data
 
             modelBuilder.Entity<SiparisDetay>()
                .Property(x => x.Fiyat)
-               .HasPrecision(10, 2);
+               .HasPrecision(10, 2); //hassasiyet
         }
     }
 }
